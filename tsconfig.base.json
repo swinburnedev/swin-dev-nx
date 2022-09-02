@@ -16,8 +16,11 @@
     "baseUrl": ".",
     "paths": {
       "@swin-dev-nx/markdown-parser": ["libs/markdown-parser/src/index.ts"],
-      "@swin-dev-nx/shared/mdx-elements": [
-        "libs/shared/mdx-elements/src/index.ts"
+      // "@swin-dev-nx/shared/mdx-elements": [
+      //   "libs/shared/mdx-elements/src/index.ts"
+      // ],
+      "@swin-dev-nx/shared/mdx-elements/*": [
+        "libs/shared/mdx-elements/src/lib/*"
       ]
     }
   },
