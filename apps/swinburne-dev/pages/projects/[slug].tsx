@@ -31,7 +31,7 @@ export function Project({frontMatter, html}: ProjectProps) {
   );
 }
 
-const PROJECTS_PATH = join(process.cwd(), process.env.projectsMarkdownPath);
+const PROJECTS_PATH = join(process.cwd(), process.env.PROJECTS_MD_PATH || '_projects');
 
 export const getStaticProps: GetStaticProps = async ({
   params
