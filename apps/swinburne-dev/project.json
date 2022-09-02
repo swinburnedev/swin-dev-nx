@@ -1,0 +1,62 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/swinburne-dev",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/swinburne-dev",
+        "outputPath": "dist/apps/swinburne-dev"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/swinburne-dev"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "swinburne-dev:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "swinburne-dev:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "swinburne-dev:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "swinburne-dev:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/swinburne-dev"],
+      "options": {
+        "jestConfig": "apps/swinburne-dev/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/swinburne-dev/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}
