@@ -1,4 +1,6 @@
+import { readdirSync } from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import styles from './index.module.css';
 
@@ -15,6 +17,8 @@ export function Project(props: ProjectProps) {
   );
 }
 
+const PROJECTS_PATH = join(process.cwd(), '_projects');
+
 export const getStaticProps: GetStaticProps<ProjectProps> = async ({
   params
 }: { params: ProjectProps}) => {
@@ -27,19 +31,13 @@ export const getStaticProps: GetStaticProps<ProjectProps> = async ({
 
 
 export const getStaticPaths: GetStaticPaths<ProjectProps> = async () => {
+
+  const paths = readdirSync(PROJECTS_PATH)
+    .map(path => path.replace(/\.mdx?$/, ''))
+    .map(slug => ({ params: { slug }}));
+
   return {
-    paths: [
-      {
-        params: {
-          slug: 'jlr-configurator'
-        }
-      },
-      {
-        params: {
-          slug: 'jlr-ncos'
-        }
-      }
-    ],
+    paths,
     fallback: false
   }
 }
