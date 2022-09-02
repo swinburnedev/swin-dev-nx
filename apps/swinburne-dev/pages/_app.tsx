@@ -8,7 +8,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Welcome to swinburne-dev!</title>
       </Head>
-      <main className="app">
+      <main className="max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
         <Component {...pageProps} />
       </main>
     </>
