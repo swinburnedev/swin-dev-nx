@@ -2,17 +2,20 @@ import { readdirSync } from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
-import styles from './index.module.css';
+import { getParsedFileContentBySlug, renderMarkdown } from '@swin-dev-nx/markdown-parser';
 
 /* eslint-disable-next-line */
 export interface ProjectProps extends ParsedUrlQuery {
-  slug: string
+  slug: string,
+  frontMatter: any
 }
 
-export function Project(props: ProjectProps) {
+export function Project({frontMatter}: ProjectProps) {
   return (
-    <div className={styles['container']}>
-      <h1>Project {props.slug}</h1>
+    <div className='m-6'>
+      <article className='prose prose-lg'>
+        <h1>{frontMatter.title}</h1>
+      </article>
     </div>
   );
 }
@@ -22,9 +25,12 @@ const PROJECTS_PATH = join(process.cwd(), '_projects');
 export const getStaticProps: GetStaticProps<ProjectProps> = async ({
   params
 }: { params: ProjectProps}) => {
+  const project = getParsedFileContentBySlug(params.slug, PROJECTS_PATH);
+  const renderHtml = renderMarkdown(project);
+
   return {
     props: {
-      slug: params.slug
+      frontMatter: project.frontMatter,
     }
   }
 }
