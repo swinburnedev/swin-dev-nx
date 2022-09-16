@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import SharedUi from './shared-ui';
+import ProjectCard from './project-card';
 
-describe('SharedUi', () => {
+describe('ProjectCard', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SharedUi />);
+    const { baseElement } = render(<ProjectCard />);
     expect(baseElement).toBeTruthy();
   });
 });
