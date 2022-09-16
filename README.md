@@ -47,6 +47,15 @@ Run `nx g @nrwl/react:lib my-lib` to generate a library.
 
 Libraries are shareable across libraries and applications. They can be imported from `@swin-dev-nx/mylib`.
 
+## Generate a new project
+
+Run `yarn nx workspace-generator new-project` and follow prompts
+
+Or specify params in the terminal
+> `yarn nx workspace-generator new-project "[title]" --excerpt="excerpt" [--dry-run]`
+
+Generates mdx file in `./_project` folder
+
 ## Development server
 
 Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
