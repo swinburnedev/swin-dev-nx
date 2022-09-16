@@ -6,9 +6,14 @@ export default {
   title: 'ProjectCard',
 } as ComponentMeta<typeof ProjectCard>;
 
-const Template: ComponentStory<typeof ProjectCard> = (args) => (
-  <ProjectCard {...args} />
-);
+const Template: ComponentStory<typeof ProjectCard> = (args) => {
+  return (
+    <ProjectCard {...args} />
+  )
+};
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+  title: 'Im a card',
+  url: 'https://google.com'
+};
