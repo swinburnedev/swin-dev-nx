@@ -1,5 +1,3 @@
-import styles from './project-card.module.css';
-
 /* eslint-disable-next-line */
 export interface ProjectCardProps {
   excerpt?: string;
