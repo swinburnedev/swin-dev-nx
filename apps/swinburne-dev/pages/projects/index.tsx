@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 import { join } from 'path';
-import { ProjectCard } from 'libs/shared/ui/src';
+import { ProjectCard } from 'libs/shared/ui/src/lib/project-card';
 import { getFilenames } from '@swin-dev-nx/markdown-parser';
 
 /* eslint-disable-next-line */

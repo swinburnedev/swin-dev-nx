@@ -62,11 +62,21 @@ Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The 
 
 ## Code scaffolding
 
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.`
 
 ## Build
 
 Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Storybook
+
+### Build 
+
+Run `yarn nx build-storybook shared-ui` OR `yarn nx run shared-ui:build-storybook`
+
+### Run
+
+Run `yarn nx run shared-ui:storybook` OR `yarn nx storybook shared-ui`
 
 ## Running unit tests
 
@@ -88,6 +98,9 @@ Run `nx graph` to see a diagram of the dependencies of your projects.
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.
 
+## Component Library
+
+UI components have been created using [Tailwind](https://tailwindcss.com/) and [Flowbite](https://flowbite.com/)
 
 
 ## ☁ Nx Cloud
