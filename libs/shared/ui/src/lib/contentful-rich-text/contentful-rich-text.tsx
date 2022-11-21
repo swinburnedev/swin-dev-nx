@@ -6,12 +6,7 @@ export interface ContentfulRichTextProps {
 }
 
 export function ContentfulRichText({document}: ContentfulRichTextProps) {
-  const html = documentToReactComponents(document);
-  console.log('documentToHtmlString:', html);
-  return html;
-  // return (
-  //   <div dangerouslySetInnerHTML={{ __html: html }}></div>
-  // );
+  return documentToReactComponents(document);
 }
 
 export default ContentfulRichText;
