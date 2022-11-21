@@ -10,7 +10,8 @@ import { MDXRemote } from 'next-mdx-remote';
 /* eslint-disable-next-line */
 export interface ProjectProps extends ParsedUrlQuery {
   frontMatter: any,
-  html: any
+  html: any,
+  slug: string
 }
 
 const mdxElements = {
@@ -32,7 +33,7 @@ export function Project({frontMatter, html}: ProjectProps) {
 
 const PROJECTS_PATH = join(process.cwd(), process.env.projectsMarkdownPath);
 
-export const getStaticProps: GetStaticProps<ProjectProps> = async ({
+export const getStaticProps: GetStaticProps = async ({
   params
 }: { params: ProjectProps}) => {
   const project = getParsedFileContentBySlug(params.slug, PROJECTS_PATH);
@@ -47,7 +48,7 @@ export const getStaticProps: GetStaticProps<ProjectProps> = async ({
 }
 
 
-export const getStaticPaths: GetStaticPaths<ProjectProps> = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
 
   const paths = readdirSync(PROJECTS_PATH)
     .map(path => path.replace(/\.mdx?$/, ''))
