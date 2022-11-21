@@ -16,7 +16,7 @@ export function Index() {
             <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-4">
                 <div className="max-w-4xl">
                     <p className="py-4">A little bit about me:</p>
-                    <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
                       <div className="max-w-4xl">
                         <i>Personal:</i>
                         <ul className="py-4">
@@ -30,7 +30,7 @@ export function Index() {
                       <div className="max-w-4xl">
                         <i>Professional:</i>
                         <ul className="py-4">
-                          <li><span role="img" aria-label="alarm clock" style={{lineHeight: 1}}>⏰</span> 15+ years experience</li>
+                          <li><span role="img" aria-label="alarm clock" style={{lineHeight: 1}}>⏰</span> 15 years experience</li>
                           <li><span role="img" aria-label="man technologist" style={{lineHeight: 1}}>👨‍💻</span> Frontend engineer</li>
                           <li><span role="img" aria-label="atom symbol" style={{lineHeight: 1}}>⚛</span> React</li>
                           <li><span role="img" aria-label="rocket" style={{lineHeight: 1}}>🚀</span> Performance</li>
