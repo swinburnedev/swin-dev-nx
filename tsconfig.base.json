@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@swin-dev-nx/gtag": ["libs/gtag/src/index.ts"],
       "@swin-dev-nx/markdown-parser": ["libs/markdown-parser/src/index.ts"],
       "@swin-dev-nx/shared/mdx-elements/*": [
         "libs/shared/mdx-elements/src/lib/*"
