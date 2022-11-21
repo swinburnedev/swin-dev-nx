@@ -35,9 +35,9 @@ export function Index() {
                       <li>Usability</li>
                       <li>Full CV</li>
                     </ul>
-                    <Link href='/projects'>
-      <a className="block pt-10">Projects</a>
-  </Link>
+                    <Link className="block pt-10" href='/projects'>
+                        Projects
+                    </Link>
                     <p>Code for this site, take a look:</p>
                   </div>
                   <div className="max-w-4xl">
