@@ -12,7 +12,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/markdown-parser"],
+      "outputs": ["{workspaceRoot}/coverage/libs/markdown-parser"],
       "options": {
         "jestConfig": "libs/markdown-parser/jest.config.ts",
         "passWithNoTests": true
