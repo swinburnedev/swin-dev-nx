@@ -3,18 +3,26 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import { getParsedFileContentBySlug, renderMarkdown } from '@swin-dev-nx/markdown-parser';
+import { MDXRemote } from 'next-mdx-remote';
+import { Youtube } from '@swin-dev-nx/shared/mdx-elements';
 
 /* eslint-disable-next-line */
 export interface ProjectProps extends ParsedUrlQuery {
-  slug: string,
-  frontMatter: any
+  frontMatter: any,
+  html: any
 }
 
-export function Project({frontMatter}: ProjectProps) {
+const mdxElements = {
+  Youtube
+}
+
+export function Project({frontMatter, html}: ProjectProps) {
   return (
     <div className='m-6'>
       <article className='prose prose-lg'>
         <h1>{frontMatter.title}</h1>
+        <hr />
+        <MDXRemote {...html} components={mdxElements} />
       </article>
     </div>
   );
@@ -26,11 +34,12 @@ export const getStaticProps: GetStaticProps<ProjectProps> = async ({
   params
 }: { params: ProjectProps}) => {
   const project = getParsedFileContentBySlug(params.slug, PROJECTS_PATH);
-  const renderHtml = renderMarkdown(project);
+  const renderHtml = await renderMarkdown(project.content);
 
   return {
     props: {
       frontMatter: project.frontMatter,
+      html: renderHtml
     }
   }
 }
