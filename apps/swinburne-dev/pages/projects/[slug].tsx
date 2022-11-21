@@ -5,6 +5,7 @@ import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import { getParsedFileContentBySlug, renderMarkdown } from '@swin-dev-nx/markdown-parser';
 import { MDXRemote } from 'next-mdx-remote';
+import Link from 'next/link';
 
 
 /* eslint-disable-next-line */
@@ -22,6 +23,10 @@ const mdxElements = {
 export function Project({frontMatter, html}: ProjectProps) {
   return (
     <div className='m-6'>
+      <Link
+        href='/projects'>
+          Back to Projects
+      </Link>
       <article className='prose prose-lg'>
         <h1>{frontMatter.title}</h1>
         <hr />

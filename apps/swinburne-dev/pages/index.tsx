@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export function Index() {
     return (
         <div className="flex-auto max-w-4xl">
@@ -13,7 +15,9 @@ export function Index() {
             <p className="mt-4 text-lg text-slate-700 dark:text-slate-400">
                 It's fast, flexible, and reliable — with zero-runtime.
             </p>
-            <code>Or at least that's what Tailwind say.</code>
+            <Link href='/projects'>
+                <a className="block pt-10">Projects</a>
+            </Link>
         </div>
     );
 }
