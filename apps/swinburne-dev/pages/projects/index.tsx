@@ -1,7 +1,9 @@
 import { GetStaticProps } from 'next';
 import { join } from 'path';
+import { gql } from '@apollo/client';
 import { ProjectCard } from 'libs/shared/ui/src/lib/project-card';
 import { getFilenames } from '@swin-dev-nx/markdown-parser';
+import client from '../../apollo/client';
 
 /* eslint-disable-next-line */
 export interface ProjectsProps {
@@ -20,11 +22,16 @@ export function Projects(props: ProjectsProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps = () => {
+export const getStaticProps: GetStaticProps = async () => {
   const PROJECTS_PATH = join(process.cwd(), process.env.PROJECTS_MD_PATH || '_projects');
+  const { data } = await client.query({
+    query: gql`
+      query {}
+    `,
+  });
   return {
     props: {
-      files: getFilenames(PROJECTS_PATH)
+      mdxProjects: getFilenames(PROJECTS_PATH)
     }
   }
 }
