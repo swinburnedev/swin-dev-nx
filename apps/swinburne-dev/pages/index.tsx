@@ -9,7 +9,7 @@ export function Index() {
           <div className="grid">
             <div className="grid-cols-1">
                 <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200 pt-10">
-                    Hi, I'm Andy &#128075;
+                    Hi, I'm Andy <span role="img" aria-label="waving hand" style={{lineHeight: 1}}>👋</span>
                 </h1>
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -21,21 +21,20 @@ export function Index() {
                       <div className="max-w-4xl">
                         <i>Personal:</i>
                         <ul className="py-4">
-                          <li>Married</li>
-                          <li>2 kids</li>
-                          <li>Runner</li>
-                          <li>Gardener</li>
-                          <li>Coder</li>
+                          <li><span role="img" aria-label="family: man, woman, girl, boy" style={{lineHeight: 1}}>👨‍👩‍👧‍👦</span> Family man</li>
+                          <li><span role="img" aria-label="man running" style={{lineHeight: 1}}>🏃‍♂️</span> Runner</li>
+                          <li><span role="img" aria-label="seedling" style={{lineHeight: 1}}>🌱</span> Gardener</li>
+                          <li><span role="img" aria-label="man technologist" style={{lineHeight: 1}}>👨‍💻</span> Coder</li>
                         </ul>
                       </div>
                       <div className="max-w-4xl">
                         <i>Professional:</i>
                         <ul className="py-4">
-                          <li>15+ years experience</li>
-                          <li>Frontend engineer</li>
-                          <li>React</li>
-                          <li>Performance</li>
-                          <li>Accessibility</li>
+                          <li><span role="img" aria-label="alarm clock" style={{lineHeight: 1}}>⏰</span> 15+ years experience</li>
+                          <li><span role="img" aria-label="man superhero" style={{lineHeight: 1}}>🦸‍♂️</span> Frontend engineer</li>
+                          <li><span role="img" aria-label="atom symbol" style={{lineHeight: 1}}>⚛</span> React</li>
+                          <li><span role="img" aria-label="rocket" style={{lineHeight: 1}}>🚀</span> Performance</li>
+                          <li><span role="img" aria-label="man bowing" style={{lineHeight: 1}}>🙇‍♂️</span> Accessibility</li>
                         </ul>
                       </div>
                     </div>
