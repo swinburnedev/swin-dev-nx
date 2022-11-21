@@ -1,25 +1,53 @@
 import Link from 'next/link';
-// import { Navbar } from 'libs/shared/ui/src/lib/navbar';
-// import { Footer } from 'libs/shared/ui/src/lib/footer';
+import { ImageCaption } from '@swin-dev-nx/shared/ui';
 import { Layout } from '../components/layout';
 
 
 export function Index() {
     return (
         <Layout>
-          <div className="flex-auto max-w-4xl">
-              <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200">
-                  Welcome to my site and playground
-              </h1>
-              <p className="mt-4 text-lg text-slate-700 dark:text-slate-400">
-                  Made with nx, next.js, Tailwind CSS and lots of other cool stuff :)
-              </p>
-              <p className="mt-4 text-lg text-slate-700 dark:text-slate-400">
-                  It's fast, flexible, and reliable — with zero-runtime.
-              </p>
-              <Link href='/projects'>
-                  <a className="block pt-10">Projects</a>
-              </Link>
+          <div className="grid">
+            <div className="grid-rows-1 grid-cols-1">
+                <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200 py-10">
+                    Hi, I'm Andy &#128075;
+                </h1>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+                  <div className="max-w-4xl">
+                  <h2>Senior Frontend Engineer</h2>
+
+                    <p>A little bit more about me:</p>
+                    <i>Personal:</i>
+                    <ul>
+                      <li>Married</li>
+                      <li>2 kids</li>
+                      <li>Runner</li>
+                      <li>Gardener</li>
+                      <li>Coder</li>
+                    </ul>
+                    <i>Professional:</i>
+                    <ul>
+                      <li>15 years experience</li>
+                      <li>Frontend engineer</li>
+                      <li>React</li>
+                      <li>Performance</li>
+                      <li>Accessibility</li>
+                      <li>Usability</li>
+                      <li>Full CV</li>
+                    </ul>
+                    <Link href='/projects'>
+      <a className="block pt-10">Projects</a>
+  </Link>
+                    <p>Code for this site, take a look:</p>
+                  </div>
+                  <div className="max-w-4xl">
+                    <ImageCaption 
+                      alt="Andy Swinburne"
+                      caption="I'm the one on the right :)"
+                      url="/images/andy.jpeg"  
+                    />
+                  </div>
+              </div>
           </div>
         </Layout>
     );
