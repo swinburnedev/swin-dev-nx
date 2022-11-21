@@ -32,5 +32,3 @@ export function Navbar(props: NavbarProps) {
     </nav>
   );
 }
-
-export default Navbar;
