@@ -1,12 +1,11 @@
 import { GetStaticProps } from 'next';
 import styles from './index.module.css';
 
-/* eslint-disable-next-line */
-export interface AboutProps {
+export interface CVProps {
   name: string;
 }
 
-export function About(props: AboutProps) {
+export function CV(props: CVProps) {
   return (
     <div className={styles['container']}>
       <h1>Hi, I'm {props.name}</h1>
@@ -14,7 +13,7 @@ export function About(props: AboutProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps<AboutProps> = async (context) => {
+export const getStaticProps: GetStaticProps<CVProps> = async (context) => {
   return {
     props: {
       name: 'Andy'
@@ -22,4 +21,4 @@ export const getStaticProps: GetStaticProps<AboutProps> = async (context) => {
   }
 }
 
-export default About;
+export default CV;

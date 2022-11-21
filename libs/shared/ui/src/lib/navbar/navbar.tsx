@@ -5,7 +5,6 @@ export interface NavbarProps {}
 
 export function Navbar(props: NavbarProps) {
   const menu = [
-    { name: 'About', href: '/about'},
     { name: 'CV', href: '/cv'},
     { name: 'Projects', href: '/projects'}
   ];
