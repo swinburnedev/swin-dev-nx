@@ -1,10 +1,11 @@
 import { readdirSync } from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import dynamic from 'next/dynamic';
 import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import { getParsedFileContentBySlug, renderMarkdown } from '@swin-dev-nx/markdown-parser';
 import { MDXRemote } from 'next-mdx-remote';
-import { Youtube } from '@swin-dev-nx/shared/mdx-elements';
+
 
 /* eslint-disable-next-line */
 export interface ProjectProps extends ParsedUrlQuery {
@@ -13,7 +14,8 @@ export interface ProjectProps extends ParsedUrlQuery {
 }
 
 const mdxElements = {
-  Youtube
+  a: dynamic(async () => await import('@swin-dev-nx/shared/mdx-elements/custom-link/custom-link')),
+  Youtube: dynamic(async () => await import('@swin-dev-nx/shared/mdx-elements/youtube/youtube'))
 }
 
 export function Project({frontMatter, html}: ProjectProps) {
