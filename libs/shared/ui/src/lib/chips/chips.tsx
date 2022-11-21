@@ -13,13 +13,13 @@ interface ChipsProps {
 
 export function Chips({chips}: ChipsProps) {
   return (
-    <div className="flex flex-wrap space-x-2 justify-end">
+    <div className="flex space-x-2 justify-end">
       { chips.map(chip => {
         const { id, name, icon } = chip;
         return (
           <span
             key={id}
-            className="rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max">
+            className="rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center max-h-10">
             { icon && <img className="rounded-full w-9 h-9 pl-3 max-w-none" alt={icon.description}
               src={icon.url} /> }
             <span className="flex items-center pl-2 pr-4 py-2">
