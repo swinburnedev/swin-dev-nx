@@ -10,6 +10,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.7.1",
+    "@contentful/rich-text-react-renderer": "^15.12.1",
     "@nrwl/next": "^15.0.13",
     "autoprefix": "^1.0.1",
     "core-js": "^3.6.5",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@babel/core": "7.12.13",
     "@babel/preset-typescript": "7.12.13",
+    "@contentful/rich-text-types": "^15.14.1",
     "@nrwl/cli": "15.0.4",
     "@nrwl/cypress": "15.0.4",
     "@nrwl/devkit": "15.0.4",
