@@ -1,54 +1,49 @@
 import { GetStaticProps } from 'next';
-import { join } from 'path';
 import { gql } from '@apollo/client';
 import { ProjectCard } from 'libs/shared/ui/src/lib/project-card';
-import { getFilenames } from '@swin-dev-nx/markdown-parser';
 import client from '../../apollo/client';
 import { Layout } from '../../components/layout';
+
 export interface ProjectsProps {
-    mdxProjects: Array<string>;
     projects: any;
 }
 
 export function Projects({ projects }: ProjectsProps) {
     return (
         <Layout>
-            <div className="grid">
-                <div className="grid-cols-1">
-                    <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200 pt-10">
-                        Projects
-                    </h1>
-                </div>
-                <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-4">
-                    <div className="max-w-4xl">
-                        <p className="py-4">
-                            Some key projects that I have been lucky enough to
-                            work on.
-                        </p>
-                        <div className="grid grid-cols-2 md:grid-cols-1 gap-2 py-8">
-                            {projects &&
-                                projects.map(project => {
-                                    const { title, slug } = project;
-                                    return (
-                                        <ProjectCard
-                                            title={title}
-                                            url={`projects/${slug}`}
-                                        />
-                                    );
-                                })}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <>
+              <div className="grid-cols-1">
+                  <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200 pt-10">
+                      Projects
+                  </h1>
+              </div>
+              <div className="grid-cols-1 max-w-4xl">
+                  <p className="py-4">
+                      Some key projects that I have been lucky enough to
+                      work on.
+                  </p>
+              </div>
+              <div className="grid lg:grid-cols-3 md:grid-cols-1 gap-4 py-8">
+                  {projects &&
+                      projects.map(project => {
+                          const { title, slug, thumbnail: { description = '', url = ''} } = project;
+                          return (
+                              <ProjectCard
+                                  key={slug}
+                                  title={title}
+                                  url={`projects/${slug}`}
+                                  imageAlt={description}
+                                  imageUrl={url}
+                              />
+                          );
+                      })}
+              </div>
+            </>
         </Layout>
     );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const PROJECTS_PATH = join(
-        process.cwd(),
-        process.env.PROJECTS_MD_PATH || '_projects'
-    );
     const { data } = await client.query({
         query: gql`
             query {
@@ -60,6 +55,10 @@ export const getStaticProps: GetStaticProps = async () => {
                             json
                         }
                         slug
+                        thumbnail {
+                          url
+                          description
+                        }
                     }
                 }
             }
@@ -68,7 +67,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
     return {
         props: {
-            mdxProjects: getFilenames(PROJECTS_PATH),
             projects: data.projectCollection.items,
         },
     };
