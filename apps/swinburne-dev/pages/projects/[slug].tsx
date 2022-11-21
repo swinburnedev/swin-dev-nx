@@ -1,63 +1,80 @@
-import { readdirSync } from 'fs';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import dynamic from 'next/dynamic';
-import { join } from 'path';
+import { gql } from '@apollo/client';
 import { ParsedUrlQuery } from 'querystring';
-import { getParsedFileContentBySlug, renderMarkdown } from '@swin-dev-nx/markdown-parser';
-import { MDXRemote } from 'next-mdx-remote';
+import client from '../../apollo/client';
+import { Layout } from '../../components/layout';
 import Link from 'next/link';
-
+import { BackButton } from '@swin-dev-nx/shared/ui';
 
 /* eslint-disable-next-line */
 export interface ProjectProps extends ParsedUrlQuery {
-  frontMatter: any,
-  html: any,
-  slug: string
+  title: string
 }
 
-const mdxElements = {
-  a: dynamic(async () => await import('@swin-dev-nx/shared/mdx-elements/custom-link/custom-link')),
-  Youtube: dynamic(async () => await import('@swin-dev-nx/shared/mdx-elements/youtube/youtube'))
-}
-
-export function Project({frontMatter, html}: ProjectProps) {
+export function Project({brand, company, description, title, url}: ProjectProps) {
   return (
-    <div className='m-6'>
-      <Link
-        href='/projects'>
-          Back to Projects
-      </Link>
-      <article className='prose prose-lg'>
-        <h1>{frontMatter.title}</h1>
-        <hr />
-        <MDXRemote {...html} components={mdxElements} />
-      </article>
-    </div>
+    <Layout>
+        <article>
+          <div className='flex align-middle pt-10'>
+            <h1 className='text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200'>{title}</h1>
+            <BackButton href='/projects' label='Back to Projects' className='ml-auto' />
+          </div>
+          <h2 className="text-xl sm:text-xl font-bold text-slate-900 tracking-tight dark:text-slate-200 pt-5">{brand}</h2>
+          <hr />
+          <h3>{company}</h3>
+          {/* <div className='prose prose-lg'>{description}</div> */}
+          <hr />
+        </article>
+    </Layout>
   );
 }
-
-const PROJECTS_PATH = join(process.cwd(), process.env.PROJECTS_MD_PATH || '_projects');
 
 export const getStaticProps: GetStaticProps = async ({
   params
 }: { params: ProjectProps}) => {
-  const project = getParsedFileContentBySlug(params.slug, PROJECTS_PATH);
-  const renderHtml = await renderMarkdown(project.content);
+  const { data } = await client.query({
+    query: gql`
+        query($slug: String!) {
+            projectCollection(where: { slug: $slug }) {
+                items {
+                  brand
+                  company
+                  description {
+                    json
+                  }
+                  slug
+                  title
+                  url
+                }
+            }
+        }
+    `,
+    variables: {
+      slug: params.slug
+    }});
+    const items = data.projectCollection.items[0];
 
   return {
     props: {
-      frontMatter: project.frontMatter,
-      html: renderHtml
+      ...items
     }
   }
 }
 
 
 export const getStaticPaths: GetStaticPaths = async () => {
-
-  const paths = readdirSync(PROJECTS_PATH)
-    .map(path => path.replace(/\.mdx?$/, ''))
-    .map(slug => ({ params: { slug }}));
+  const { data } = await client.query({
+    query: gql`
+        query {
+            projectCollection(limit: 10) {
+                items {
+                    slug
+                }
+            }
+        }
+    `});
+  const paths = data.projectCollection.items
+    .map(item => ({ params: { slug: item.slug }}));
 
   return {
     paths,

@@ -3,7 +3,7 @@ export interface FooterProps {}
 
 export function Footer(props: FooterProps) {
   return (
-      <footer className="p-4 bg-white sm:p-6 dark:bg-gray-900">
+      <footer className="container mx-auto mb-4">
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
             <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="/" className="hover:underline">Swinburne.dev</a>
