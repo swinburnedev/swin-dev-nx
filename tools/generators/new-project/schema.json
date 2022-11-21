@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "new-project",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of project",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What's the title of the project"
+    },
+    "excerpt": {
+      "type": "string",
+      "description": "Excerpt summary of project",
+      "x-prompt": "What's the excerpt for the project"
+    }
+  },
+  "required": ["title", "excerpt"]
+}
