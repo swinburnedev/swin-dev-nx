@@ -11,13 +11,12 @@ export function Index() {
                 <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200 pt-10">
                     Hi, I'm Andy <span role="img" aria-label="waving hand" style={{lineHeight: 1}}>👋</span>
                 </h1>
+                <h2 className="text-xl sm:text-xl font-bold text-slate-900 tracking-tight dark:text-slate-200 pt-5">Senior Frontend Engineer</h2>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-4">
                 <div className="max-w-4xl">
-                  <h2 className="text-xl sm:text-xl font-bold text-slate-900 tracking-tight dark:text-slate-200 pt-5">Senior Frontend Engineer</h2>
-
                     <p className="py-4">A little bit about me:</p>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-1 gap-4">
                       <div className="max-w-4xl">
                         <i>Personal:</i>
                         <ul className="py-4">
