@@ -11,10 +11,11 @@ export interface ProjectsProps {
 export function Projects(props: ProjectsProps) {
   return (
     <div className="p-10">
-      <h1>Welcome to Projects!</h1>
-      { props.files && props.files.map(project => {
+      <h1>Projects</h1>
+      <p>Coming soon...</p>
+      {/* { props.files && props.files.map(project => {
         return (<ProjectCard title={project} url={`projects/${project}`} />);
-      })}
+      })} */}
     </div>
   );
 }
