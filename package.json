@@ -9,6 +9,7 @@
   },
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.7.1",
     "@nrwl/next": "15.0.4",
     "autoprefix": "^1.0.1",
     "core-js": "^3.6.5",
