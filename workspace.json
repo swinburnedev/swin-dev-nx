@@ -4,6 +4,7 @@
   "projects": {
     "markdown-parser": "libs/markdown-parser",
     "shared-mdx-elements": "libs/shared/mdx-elements",
+    "shared-ui": "libs/shared/ui",
     "swinburne-dev": "apps/swinburne-dev",
     "swinburne-dev-e2e": "apps/swinburne-dev-e2e"
   }
