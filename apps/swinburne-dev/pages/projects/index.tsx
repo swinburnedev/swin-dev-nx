@@ -26,11 +26,12 @@ export function Projects({ projects }: ProjectsProps) {
               <div className="grid lg:grid-cols-3 md:grid-cols-1 gap-4 py-8">
                   {projects &&
                       projects.map(project => {
-                          const { title, slug, thumbnail: { description = '', url = ''} } = project;
+                          const { title, slug, brand, thumbnail: { description = '', url = ''} } = project;
                           return (
                               <ProjectCard
                                   key={slug}
                                   title={title}
+                                  excerpt={brand}
                                   url={`projects/${slug}`}
                                   imageAlt={description}
                                   imageUrl={url}
