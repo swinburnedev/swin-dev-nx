@@ -25,5 +25,6 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["shared-ui"]
+  "implicitDependencies": ["shared-ui"],
+  "name": "storybook-e2e-ui-e2e"
 }

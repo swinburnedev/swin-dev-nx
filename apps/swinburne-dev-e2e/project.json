@@ -25,5 +25,6 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["swinburne-dev"]
+  "implicitDependencies": ["swinburne-dev"],
+  "name": "swinburne-dev-e2e"
 }
