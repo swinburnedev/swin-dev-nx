@@ -3,30 +3,35 @@ import { gql } from '@apollo/client';
 import { ParsedUrlQuery } from 'querystring';
 import client from '../../apollo/client';
 import { Layout } from '../../components/layout';
-import { BackButton, Chips, IChip, ContentfulRichText } from '@swin-dev-nx/shared/ui';
+import { BackButton, Chips, IChip, ContentfulRichText, ImageCaption } from '@swin-dev-nx/shared/ui';
+import { Document } from '@contentful/rich-text-types';
 
 interface TagsCollection {
   items: Array<IChip>
 }
 
-interface Image {
+interface IImage {
   description: string,
   url: string,
 }
 
-export interface ProjectProps extends ParsedUrlQuery {
+interface IParams extends ParsedUrlQuery {
+  slug: string
+}
+
+export interface IProjectProps {
   brand: string,
   company: string,
   description?: {
-    json: any
+    json: Document
   },
-  screenshotDesktop: Image,
+  screenshotDesktop: IImage,
   title: string,
   tagsCollection: TagsCollection,
-  url: string,
+  url?: string,
 }
 
-export function Project({brand, company, description, screenshotDesktop, title, tagsCollection, url}: ProjectProps) {
+export function Project({brand, company, description, screenshotDesktop, title, tagsCollection}: IProjectProps) {
   return (
     <Layout>
         <article>
@@ -42,17 +47,16 @@ export function Project({brand, company, description, screenshotDesktop, title, 
             <Chips chips={tagsCollection.items} />
           </div>
           <hr className="pb-10"/>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="mb-8">
-              <ContentfulRichText document={description?.json} />
-            </div>
-            <div className="mb-4">
+          <div className="grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-[7fr_5fr] gap-4">
+            <ContentfulRichText document={description?.json} />
+            <div className="pl-3">
               { screenshotDesktop &&
-                <img
-                  src={screenshotDesktop.url}
-                  className="max-w-full h-auto rounded-lg"
-                  alt={screenshotDesktop.description}
-                />
+                <ImageCaption 
+                    alt={screenshotDesktop.description}
+                    caption={`${title} mobile screenshot`}
+                    url={screenshotDesktop.url}
+                    maxWidth="xs"
+                  />
               }
             </div>
           </div>
@@ -61,9 +65,8 @@ export function Project({brand, company, description, screenshotDesktop, title, 
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({
-  params
-}: { params: ProjectProps}) => {
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { slug } = context.params as IParams;
   const { data } = await client.query({
     query: gql`
         query($slug: String!) {
@@ -96,7 +99,7 @@ export const getStaticProps: GetStaticProps = async ({
         }
     `,
     variables: {
-      slug: params.slug
+      slug: slug
     }});
     const items = data.projectCollection.items[0];
 
@@ -106,7 +109,6 @@ export const getStaticProps: GetStaticProps = async ({
     }
   }
 }
-
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await client.query({

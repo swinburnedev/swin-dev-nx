@@ -28,11 +28,15 @@ export function Projects({ projects }: ProjectsProps) {
                         <div className="grid grid-cols-2 md:grid-cols-1 gap-2 py-8">
                             {projects &&
                                 projects.map(project => {
-                                    const { title, slug } = project;
+                                    const { title, slug, brand } = project;
                                     return (
                                         <ProjectCard
+                                            key={slug}
                                             title={title}
+                                            excerpt={brand}
                                             url={`projects/${slug}`}
+                                            imageAlt=""
+                                            imageUrl=""
                                         />
                                     );
                                 })}
