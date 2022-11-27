@@ -3,7 +3,13 @@ import { gql } from '@apollo/client';
 import { ParsedUrlQuery } from 'querystring';
 import client from '../../apollo/client';
 import { Layout } from '../../components/layout';
-import { BackButton, Chips, IChip, ContentfulRichText, ImageCaption } from '@swin-dev-nx/shared/ui';
+import {
+  BackButton,
+  Chips,
+  IChip,
+  ContentfulRichText,
+  MobilePreview,
+} from '@swin-dev-nx/shared/ui';
 import { Document } from '@contentful/rich-text-types';
 
 interface TagsCollection {
@@ -25,13 +31,13 @@ export interface IProjectProps {
   description?: {
     json: Document
   },
-  screenshotDesktop: IImage,
+  screenshotMobile: IImage,
   title: string,
   tagsCollection: TagsCollection,
   url?: string,
 }
 
-export function Project({brand, company, description, screenshotDesktop, title, tagsCollection}: IProjectProps) {
+export function Project({brand, company, description, screenshotMobile, title, tagsCollection}: IProjectProps) {
   return (
     <Layout>
         <article>
@@ -50,12 +56,10 @@ export function Project({brand, company, description, screenshotDesktop, title, 
           <div className="grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-[7fr_5fr] gap-4">
             <ContentfulRichText document={description?.json} />
             <div className="pl-3">
-              { screenshotDesktop &&
-                <ImageCaption 
-                    alt={screenshotDesktop.description}
-                    caption={`${title} mobile screenshot`}
-                    url={screenshotDesktop.url}
-                    maxWidth="xs"
+              { screenshotMobile &&
+                <MobilePreview 
+                    alt={screenshotMobile.description}
+                    url={screenshotMobile.url}
                   />
               }
             </div>
@@ -77,7 +81,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
                   description {
                     json
                   }
-                  screenshotDesktop {
+                  screenshotMobile {
                     description
                     url
                   }
