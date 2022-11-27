@@ -3,5 +3,6 @@ export * from './lib/chips/chips';
 export * from './lib/back-button';
 export * from './lib/footer';
 export * from './lib/image-caption';
+export * from './lib/mobile-preview';
 export * from './lib/navbar';
 export * from './lib/project-card';

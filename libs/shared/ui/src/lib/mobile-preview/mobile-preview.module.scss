@@ -1,0 +1,32 @@
+.container {
+  position: relative;
+  width: 400px;
+  height: 850px;
+  overflow: hidden;
+}
+
+
+.mobile-container {
+  position: relative;
+  width: 400px;
+  height: 850px;
+  overflow: scroll;
+}
+
+.wrapper {
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 400px;
+  height: 850px;
+  pointer-events: none;
+}
+
+.preview {
+  position: relative;
+  right: -10px;
+  top: 14px;
+  z-index: 0;
+  width: 380px;
+}
