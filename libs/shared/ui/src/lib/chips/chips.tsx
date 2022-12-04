@@ -13,7 +13,7 @@ interface ChipsProps {
 
 export function Chips({chips}: ChipsProps) {
   return (
-    <div className="flex space-x-2 justify-end">
+    <div className="flex space-x-2 mt-4 md:justify-end md:mt-0">
       { chips.map(chip => {
         const { id, name, icon } = chip;
         return (
