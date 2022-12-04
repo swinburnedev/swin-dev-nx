@@ -41,9 +41,9 @@ export function Project({brand, company, description, screenshotMobile, title, t
   return (
     <Layout>
         <article>
-          <div className='flex align-middle pt-10'>
+          <div className='md:flex align-middle pt-10'>
             <h1 className='text-3xl sm:text-4xl font-extrabold text-slate-800 tracking-tight'>{title}</h1>
-            <BackButton href='/projects' label='Back to Projects' className='ml-auto' />
+            <BackButton href='/projects' label='Back to Projects' className='ml-auto mt-4 justify-end md:mt-0' />
           </div>
           <div className='md:flex py-10'>
             <div className='grow'>
