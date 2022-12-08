@@ -8,11 +8,12 @@ import { Layout } from '../../components/layout';
 export interface ProjectsProps {
     mdxProjects: Array<string>;
     projects: any;
+    title: string;
 }
 
-export function Projects({ projects }: ProjectsProps) {
+export function Projects({ projects, title }: ProjectsProps) {
     return (
-        <Layout>
+        <Layout title={title}>
             <div className="grid">
                 <div className="grid-cols-1">
                     <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200 pt-10">
@@ -74,6 +75,7 @@ export const getStaticProps: GetStaticProps = async () => {
         props: {
             mdxProjects: getFilenames(PROJECTS_PATH),
             projects: data.projectCollection.items,
+            title: 'Projects',
         },
     };
 };

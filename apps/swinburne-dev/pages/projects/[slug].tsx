@@ -46,7 +46,7 @@ export function Project({
     tagsCollection,
 }: IProjectProps) {
     return (
-        <Layout>
+        <Layout title={title}>
             <article>
                 <div className="md:flex align-middle pt-10">
                     <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800 tracking-tight">
