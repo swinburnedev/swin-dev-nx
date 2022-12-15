@@ -9,7 +9,10 @@ import {
     ContentfulRichText,
     MobilePreview,
 } from '@swin-dev-nx/shared/ui';
-import { IParams, IProjectProps } from './[slug].types';
+import {
+    IParams,
+    IProjectProps,
+} from '../../types/pages/projects/[slug].types';
 
 export function Project({
     brand,

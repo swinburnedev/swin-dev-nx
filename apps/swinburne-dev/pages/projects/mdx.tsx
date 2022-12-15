@@ -5,13 +5,9 @@ import { ProjectCard } from 'libs/shared/ui/src/lib/project-card';
 import { getFilenames } from '@swin-dev-nx/markdown-parser';
 import client from '../../apollo/client';
 import { Layout } from '../../components/layout';
-export interface ProjectsProps {
-    mdxProjects: Array<string>;
-    projects: any;
-    title: string;
-}
+import { IProjectsProps } from '../../types/pages/projects/mdx/mdx.types';
 
-export function Projects({ projects, title }: ProjectsProps) {
+export function Projects({ projects, title }: IProjectsProps) {
     return (
         <Layout title={title}>
             <div className="grid">

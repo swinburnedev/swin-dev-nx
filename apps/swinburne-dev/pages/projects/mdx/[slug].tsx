@@ -8,7 +8,7 @@ import {
 } from '@swin-dev-nx/markdown-parser';
 import { MDXRemote } from 'next-mdx-remote';
 import Link from 'next/link';
-import { IProjectProps } from './[slug].types';
+import { IProjectProps } from '../../../types/pages/projects/mdx/[slug].types';
 
 const mdxElements = {
     a: dynamic(

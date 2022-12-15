@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 import { ProjectCard } from 'libs/shared/ui/src/lib/project-card';
 import client from '../../apollo/client';
 import { Layout } from '../../components/layout';
-import { IProjectsProps } from './index.types';
+import { IProjectsProps } from '../../types/pages/projects/index.types';
 
 export function Projects({ projects, title }: IProjectsProps) {
     return (
