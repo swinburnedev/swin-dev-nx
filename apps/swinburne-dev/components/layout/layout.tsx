@@ -1,23 +1,14 @@
 import { Navbar, Footer } from '@swin-dev-nx/shared/ui';
 import Head from 'next/head';
+import { IProps } from './layout.types';
 
-type Props = {
-  children: JSX.Element,
-  title: string,
-};
-
-export const Layout: React.FC<Props> = ({
-  children,
-  title,
-}) => (
+export const Layout: React.FC<IProps> = ({ children, title }) => (
     <>
-      <Head>
-        <title>{`${title} | Swinburne Dev`}</title>
-      </Head>
-      <Navbar />
-        <main className="container mx-auto">
-          {children}
-        </main>
-      <Footer />
+        <Head>
+            <title>{`${title} | Swinburne Dev`}</title>
+        </Head>
+        <Navbar />
+        <main className="container mx-auto">{children}</main>
+        <Footer />
     </>
 );

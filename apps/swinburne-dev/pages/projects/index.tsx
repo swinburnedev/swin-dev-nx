@@ -3,13 +3,9 @@ import { gql } from '@apollo/client';
 import { ProjectCard } from 'libs/shared/ui/src/lib/project-card';
 import client from '../../apollo/client';
 import { Layout } from '../../components/layout';
+import { IProjectsProps } from './index.types';
 
-export interface ProjectsProps {
-    projects: any;
-    title: string;
-}
-
-export function Projects({ projects, title }: ProjectsProps) {
+export function Projects({ projects, title }: IProjectsProps) {
     return (
         <Layout title={title}>
             <>
@@ -77,7 +73,7 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
         props: {
             projects: data.projectCollection.items,
-            title: 'Projects'
+            title: 'Projects',
         },
     };
 };

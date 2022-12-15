@@ -1,41 +1,15 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { gql } from '@apollo/client';
-import { ParsedUrlQuery } from 'querystring';
+
 import client from '../../apollo/client';
 import { Layout } from '../../components/layout';
 import {
     BackButton,
     Chips,
-    IChip,
     ContentfulRichText,
     MobilePreview,
 } from '@swin-dev-nx/shared/ui';
-import { Document } from '@contentful/rich-text-types';
-
-interface TagsCollection {
-    items: Array<IChip>;
-}
-
-interface IImage {
-    description: string;
-    url: string;
-}
-
-interface IParams extends ParsedUrlQuery {
-    slug: string;
-}
-
-export interface IProjectProps {
-    brand: string;
-    company: string;
-    description?: {
-        json: Document;
-    };
-    screenshotMobile: IImage;
-    title: string;
-    tagsCollection: TagsCollection;
-    url?: string;
-}
+import { IParams, IProjectProps } from './[slug].types';
 
 export function Project({
     brand,
