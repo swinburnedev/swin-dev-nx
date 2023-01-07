@@ -21,6 +21,8 @@ export function Navbar() {
             alt="Swinburne Development Ltd"
             className="mr-3 mt-2 h-16"
             src="/images/swin-dev-square-128.png"
+            height="64"
+            width="255"
           />
       </a>
       <button
