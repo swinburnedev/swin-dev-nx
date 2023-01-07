@@ -14,6 +14,7 @@ export function ImageCaption({ alt, caption, loading = 'eager', maxWidth = 'full
         className={`max-w-${maxWidth} h-auto rounded-lg`}
         src={url}
         alt={alt}
+        /* @ts-ignore */
         fetchpriority={priority}
         loading={loading}
       />
