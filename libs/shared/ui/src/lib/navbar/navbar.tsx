@@ -17,7 +17,14 @@ export function Navbar() {
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
       <a href="/" className="flex items-center">
-          <img src="/images/swin-dev-square-128.png" className="mr-3 mt-2 h-16" alt="Swinburne Development Ltd" />
+          <img
+            alt="Swinburne Development Ltd"
+            className="mr-3 mt-2 h-16"
+            src="/images/swin-dev-square-128.png"
+            /* @ts-ignore */
+            fetchpriority="high"
+            loading="lazy"
+          />
       </a>
       <button
         type="button"
