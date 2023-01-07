@@ -49,7 +49,9 @@ export function Index() {
                     <ImageCaption 
                       alt="Andy Swinburne"
                       caption="I'm the one on the right :)"
-                      url="/images/andy.jpeg"  
+                      loading="lazy"
+                      priority="high"
+                      url="/images/andy.jpeg"
                     />
                   </div>
               </div>
