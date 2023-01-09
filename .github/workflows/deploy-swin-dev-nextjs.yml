@@ -11,12 +11,16 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - name: Set up Node.js version
-              uses: actions/setup-node@v1
-              with:
-                  node-version: '16.x'
+            - name: Read .nvmrc
+              run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+              id: nvm
 
-            - name: npm install, build, and export
+            - name: Set up Node.js version ${{ steps.nvm.outputs.NODE_VERSION }}
+              uses: actions/setup-node@v2
+              with:
+                  node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+
+            - name: Run npm install, build, and export
               run: |
                   npm install
                   npx nx run swinburne-dev:export
