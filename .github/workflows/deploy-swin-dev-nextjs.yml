@@ -1,12 +1,22 @@
 name: Deploy swinburne-dev nextjs AWS
 
 on:
-  push:
-    branches: [ "main" ]
+    push:
+        branches: ['main']
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v3
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Set up Node.js version
+              uses: actions/setup-node@v1
+              with:
+                  node-version: '16.x'
+
+            - name: npm install, build, and export
+              run: |
+                  npm install
+                  npx nx run swinburne-dev:export
