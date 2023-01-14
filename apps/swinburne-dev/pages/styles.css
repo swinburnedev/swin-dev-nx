@@ -3,22 +3,31 @@
 @tailwind utilities;
 
 @layer base {
-  a {
-    @apply text-orange-600
-  }
-  a:hover {
-    @apply underline
-  }
+    a {
+        @apply text-orange-600;
+    }
+    a:hover {
+        @apply underline;
+    }
 }
 
+.rich-text h1 {
+    @apply text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight pt-10;
+}
+.rich-text h2 {
+    @apply text-xl sm:text-xl font-bold text-slate-900 tracking-tight py-4;
+}
 .rich-text h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin: 0.8rem 0 0.2rem 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0.8rem 0 0.2rem 0;
 }
 .rich-text h3:first-of-type {
-  margin-top: 0;
+    margin-top: 0;
 }
-.rich-text p {
-  margin-bottom: 0.5rem;
+.rich-text > p {
+    margin-bottom: 0.5rem;
+}
+.rich-text ul li p {
+    margin-bottom: 0.2rem;
 }

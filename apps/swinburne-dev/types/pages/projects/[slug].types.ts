@@ -1,14 +1,10 @@
 import { ParsedUrlQuery } from 'querystring';
 import { IChip } from '@swin-dev-nx/shared/ui';
 import { Document } from '@contentful/rich-text-types';
+import { IImage } from '../../content/image.types';
 
 interface ITagsCollection {
     items: Array<IChip>;
-}
-
-interface IImage {
-    description: string;
-    url: string;
 }
 
 export interface IParams extends ParsedUrlQuery {

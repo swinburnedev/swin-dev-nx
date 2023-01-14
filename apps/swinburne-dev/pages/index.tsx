@@ -1,63 +1,89 @@
-import Link from 'next/link';
-import { ImageCaption } from '@swin-dev-nx/shared/ui';
+import { GetStaticProps } from 'next';
+import { ContentfulRichText, ImageCaption } from '@swin-dev-nx/shared/ui';
+import { gql } from '@apollo/client';
+import client from '../apollo/client';
 import { Layout } from '../components/layout';
+import { IHomepageProps } from '../types/index.types';
 
-
-export function Index() {
+export function Index({
+    contentLeft,
+    contentRight,
+    heroImage,
+    intro,
+    outro,
+}: IHomepageProps) {
     return (
         <Layout title="Home">
-          <div className="grid">
-            <div className="grid-cols-1">
-                <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200 pt-10">
-                    Hi, I'm Andy <span role="img" aria-label="waving hand" style={{lineHeight: 1}}>👋</span>
-                </h1>
-                <h2 className="text-xl sm:text-xl font-bold text-slate-900 tracking-tight dark:text-slate-200 pt-5">Contract Senior Frontend Engineer</h2>
-            </div>
-            <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-4">
-                <div className="max-w-4xl">
-                    <p className="py-4">A little bit about me:</p>
-                    <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
-                      <div className="max-w-4xl">
-                        <i>Personal:</i>
-                        <ul className="py-4">
-                          <li><span role="img" aria-label="family: man, woman, girl, boy" style={{lineHeight: 1}}>👨‍👩‍👧‍👦</span> Family man</li>
-                          <li><span role="img" aria-label="rugby football" style={{lineHeight: 1}}>🏉</span> Rugby fan</li>
-                          <li><span role="img" aria-label="man running" style={{lineHeight: 1}}>🏃‍♂️</span> Runner</li>
-                          <li><span role="img" aria-label="seedling" style={{lineHeight: 1}}>🌱</span> Gardener</li>
-                          <li><span role="img" aria-label="man biking" style={{lineHeight: 1}}>🚴‍♂️</span> Cyclist</li>
-                        </ul>
-                      </div>
-                      <div className="max-w-4xl">
-                        <i>Professional:</i>
-                        <ul className="py-4">
-                          <li><span role="img" aria-label="alarm clock" style={{lineHeight: 1}}>⏰</span> 15 years experience</li>
-                          <li><span role="img" aria-label="man technologist" style={{lineHeight: 1}}>👨‍💻</span> Frontend engineer</li>
-                          <li><span role="img" aria-label="atom symbol" style={{lineHeight: 1}}>⚛</span> React</li>
-                          <li><span role="img" aria-label="rocket" style={{lineHeight: 1}}>🚀</span> Performance</li>
-                          <li><span role="img" aria-label="man bowing" style={{lineHeight: 1}}>🙇‍♂️</span> Accessibility</li>
-                        </ul>
-                      </div>
+            <div className="grid">
+                <div className="grid-cols-1">
+                    <ContentfulRichText document={intro?.json} />
+                </div>
+                <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-4">
+                    <div className="max-w-4xl">
+                        <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
+                            <ContentfulRichText document={contentLeft?.json} />
+                            <ContentfulRichText document={contentRight?.json} />
+                        </div>
+                        <div className="py-4">
+                            <ContentfulRichText document={outro?.json} />
+                        </div>
                     </div>
-                    <ul className="py-4">
-                      <li><p>Want to see the code for this site? <Link href='https://github.com/swinburnedev/swin-dev-nx'>Take a look on Github</Link> <span role="img" aria-label="eyes" style={{lineHeight: 1}}>👀</span></p></li>
-                      <li className="block py-4">
-                        <p>Have a closer look at some key <Link href='/projects'>Projects</Link> or view my <Link href='/pdf/CV_Swinburne_Andy_website.pdf'>full CV</Link>.</p>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="max-w-4xl">
-                    <ImageCaption 
-                      alt="Andy Swinburne"
-                      caption="I'm the one on the right :)"
-                      loading="lazy"
-                      priority="high"
-                      url="/images/andy.jpeg"
-                    />
-                  </div>
-              </div>
-          </div>
+                    <div className="max-w-4xl">
+                        <ImageCaption
+                            alt={heroImage.title}
+                            caption={heroImage.description}
+                            loading="lazy"
+                            priority="high"
+                            url={heroImage.url}
+                        />
+                    </div>
+                </div>
+            </div>
         </Layout>
     );
 }
+
+export const getStaticProps: GetStaticProps = async context => {
+    const query = gql`
+        query ($preview: Boolean!) {
+            pageCollection(where: { slug: "/" }, preview: $preview) {
+                items {
+                    contentLeft {
+                        json
+                    }
+                    contentRight {
+                        json
+                    }
+                    heroImage {
+                        description
+                        title
+                        url
+                    }
+                    intro {
+                        json
+                    }
+                    outro {
+                        json
+                    }
+                    slug
+                    title
+                }
+            }
+        }
+    `;
+    const contentfulPreview = Boolean(process.env.CONTENTFUL_PREVIEW);
+    const { data } = await client.query({
+        query: query,
+        variables: {
+            preview: contentfulPreview,
+        },
+    });
+    const page = data.pageCollection.items[0];
+    return {
+        props: {
+            ...page,
+        },
+    };
+};
 
 export default Index;
