@@ -1,0 +1,24 @@
+{
+	"positions": [
+		{
+			"company": "Purplebricks PLC",
+			"role": "Senior Front End Engineer",
+			"current": false,
+			"start": "04/04/2022",
+			"end": "23/12/2022",
+			"type": "permanent",
+			"desc": "Senior engineer within the Instructions squad, responsible for integration of BigCommerce APIs into current React app, to provide a more flexible headless e-commerce approach. Supported architecture and planning of new Instruct app, using Nx monorepo, Next.js, Typescript, Apollo and BigCommerce GraphQL / REST APIs. Maintained and updated many Next.js apps across the Nx monorepo and other legacy React apps, to help address technical debt and introduce new features.
+			Implemented BigCommerce vouchers into Instruct flow, allowing vouchers to be entered during checkout and applied to cart, plus appropriate error handling for invalid, expired or ineligible vouchers.
+			Key member of Front End Chapter meeting, helping drive engagement and motivate wider FE team. Contributed to Purplebricks component library using Nx libs, styled components and storybook."
+		},
+		{
+			"company": "Shell Energy Retail Ltd",
+			"role": "Lead Software Engineer",
+			"current": false,
+			"start": "10/10/2020",
+			"end": "01/04/2022",
+			"type": "permanent",
+			"desc": "Lead Software Engineer of 1 Agile Pod (3 x FE, 1 x QA, 1 x UX) responsible for SERL Broadband Registration journey and public pages. Maintain various micro front-ends web apps, driven by Contentstack headless CMS, tech stack React / Redux / NextJs / Express."
+		}
+	]
+}
