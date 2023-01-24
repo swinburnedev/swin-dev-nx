@@ -1,0 +1,52 @@
+{
+  "name": "swinburne-dev-playwright-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/swinburne-dev-playwright-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nxkit/playwright:test",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/swinburne-dev-playwright-e2e/test-results",
+        "playwrightConfig": "apps/swinburne-dev-playwright-e2e/playwright.config.ts",
+        "devServerTarget": "swinburne-dev:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "swinburne-dev:serve:production"
+        }
+      }
+    },
+    "debug": {
+      "executor": "@nxkit/playwright:test",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/swinburne-dev-playwright-e2e/test-results",
+        "playwrightConfig": "apps/swinburne-dev-playwright-e2e/playwright.config.ts",
+        "devServerTarget": "swinburne-dev:serve:development",
+        "debug": true
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "swinburne-dev:serve:production"
+        }
+      }
+    },
+    "show-report": {
+      "executor": "@nxkit/playwright:show-report",
+      "options": {
+        "reportPath": "dist/apps/swinburne-dev-playwright-e2e/playwright-report"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/swinburne-dev-playwright-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["swinburne-dev"]
+}
