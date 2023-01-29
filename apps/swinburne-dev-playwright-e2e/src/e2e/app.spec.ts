@@ -25,3 +25,12 @@ test.describe('nav', () => {
         await expect(link).toHaveAttribute('href', '/projects');
     });
 });
+
+test.describe('footer', () => {
+    test('has current year copyright', async ({ page }) => {
+        const currentYear: string = new Date().getFullYear().toString();
+        await expect(page.getByRole('contentinfo')).toHaveText(
+            `© ${currentYear} Swinburne.dev`
+        );
+    });
+});
