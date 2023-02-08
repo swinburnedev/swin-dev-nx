@@ -22,7 +22,7 @@ export const ProjectCard = (props: ProjectCardProps) => {
         </a>
         <div className="p-5">
             <a href={url}>
-                <h5 className="mb-2 text-2xl tracking-tight text-gray-700">{title}</h5>
+                <h3 className="mb-2 text-2xl tracking-tight text-gray-700">{title}</h3>
             </a>
             <p className="mb-3 font-bold text-darkgray-800">{excerpt}</p>
             <a

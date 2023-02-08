@@ -20,7 +20,10 @@ export function Projects({ projects, title }: IProjectsProps) {
                         on.
                     </p>
                 </div>
-                <div className="grid lg:grid-cols-3 md:grid-cols-1 gap-4 py-8">
+                <div
+                    className="grid lg:grid-cols-3 md:grid-cols-1 gap-4 py-8"
+                    data-testid="project-cards"
+                >
                     {projects &&
                         projects.map(project => {
                             const {
