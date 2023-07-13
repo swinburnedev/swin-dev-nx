@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "new-project": {
+      "implementation": "./src/generators/new-project",
+      "schema": "./src/generators/new-project/schema.json",
+      "description": "Generator new-project"
+    }
+  }
+}

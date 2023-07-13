@@ -20,7 +20,8 @@
       "@swin-dev-nx/shared/mdx-elements/*": [
         "libs/shared/mdx-elements/src/lib/*"
       ],
-      "@swin-dev-nx/shared/ui": ["libs/shared/ui/src/index.ts"]
+      "@swin-dev-nx/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@swin-dev-nx/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-const { createGlobPatternsForDependencies } = require('@nrwl/react/tailwind');
+const { createGlobPatternsForDependencies } = require('@nx/react/tailwind');
 const { join } = require('path');
 
 module.exports = {
@@ -14,10 +14,6 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
-  presets: [
-    require('../../tailwind.preset.js')
-  ]
-}
+  plugins: [require('@tailwindcss/typography')],
+  presets: [require('../../tailwind.preset.js')],
+};
