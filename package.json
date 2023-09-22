@@ -45,6 +45,7 @@
     "@playwright/test": "^1.25.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "@storybook/addon-essentials": "7.0.27",
+    "@storybook/core-common": "^7.0.24",
     "@storybook/core-server": "7.0.27",
     "@storybook/react": "7.0.27",
     "@storybook/react-webpack5": "^7.0.27",

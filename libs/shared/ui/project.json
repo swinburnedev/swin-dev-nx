@@ -36,8 +36,8 @@
       "executor": "@nx/storybook:build",
       "outputs": ["{options.outputDir}"],
       "options": {
-        "configDir": "libs/shared/ui/.storybook",
-        "outputDir": "dist/storybook/shared-ui"
+        "outputDir": "dist/storybook/shared-ui",
+        "configDir": "libs/shared/ui/.storybook"
       },
       "configurations": {
         "ci": {
