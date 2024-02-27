@@ -46,16 +46,12 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/swinburne-dev"],
       "options": {
-        "jestConfig": "apps/swinburne-dev/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/swinburne-dev/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/swinburne-dev/**/*.{ts,tsx,js,jsx}"]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     }
   },
   "tags": []
