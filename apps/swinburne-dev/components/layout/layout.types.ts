@@ -1,4 +1,4 @@
 export interface IProps {
-    children: JSX.Element;
-    title: string;
+    children: React.ReactNode
+    title: string
 }
