@@ -3,9 +3,9 @@ import Link from 'next/link';
 
 export function Navbar() {
   const menu = [
-    { name: 'CV', href: '/pdf/CV_Swinburne_Andy_website.pdf'},
-    { name: 'Projects', href: '/projects'}
-  ];
+      {name: "Projects", href: "/projects"},
+      {name: "Contact", href: "/contact"},
+  ]
   
   const [ navOpen, setNavOpen ] = useState(false);
   const mobileToggle = (event: React.MouseEvent<HTMLElement>) => {

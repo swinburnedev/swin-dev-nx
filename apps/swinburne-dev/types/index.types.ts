@@ -1,20 +1,20 @@
 import { IImage } from './content/image.types';
 import { Document } from '@contentful/rich-text-types';
 
-export interface IHomepageProps {
+export interface IPageProps {
     contentLeft?: {
-        json: Document;
-    };
+        json: Document
+    }
     contentRight?: {
-        json: Document;
-    };
+        json: Document
+    }
     intro?: {
-        json: Document;
-    };
+        json: Document
+    }
     outro?: {
-        json: Document;
-    };
-    heroImage: IImage;
-    slug: string;
-    title: string;
+        json: Document
+    }
+    heroImage: IImage
+    slug: string
+    title: string
 }
