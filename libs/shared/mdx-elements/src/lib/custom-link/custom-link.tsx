@@ -7,11 +7,7 @@ export interface CustomLinkProps {
 }
 
 export function CustomLink({ as, href, ...otherProps }: CustomLinkProps) {
-  return (
-    <Link as={as} href={href} legacyBehavior>
-      <a className="bg-green-800" {...otherProps} />
-    </Link>
-  );
+  return <Link className="bg-green-800" as={as} href={href} {...otherProps} />
 }
 
 export default CustomLink;
