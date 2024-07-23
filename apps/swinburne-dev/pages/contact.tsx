@@ -31,13 +31,7 @@ export function Contact({contentLeft, heroImage, intro, outro}: IPageProps) {
                         </div>
                     </div>
                     <div className="max-w-4xl">
-                        <ImageCaption
-                            alt={heroImage.title}
-                            caption={heroImage.description}
-                            loading="lazy"
-                            priority="high"
-                            url={heroImage.url}
-                        />
+                        <ImageCaption alt={heroImage.description} loading="lazy" priority="high" url={heroImage.url} />
                     </div>
                 </div>
             </div>
