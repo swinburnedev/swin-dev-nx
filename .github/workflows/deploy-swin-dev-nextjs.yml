@@ -23,11 +23,11 @@ jobs:
             - name: Run npm install, build, and export
               run: |
                   npm install
-                  npx nx build swinburne-dev --verbose
+                  npx nx build swinburne-dev
 
             - uses: aws-actions/configure-aws-credentials@v1
               with:
                  aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
                  aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                  aws-region: eu-west-2
-            - run: aws s3 sync ./out s3://nx-swinburne-dev-nextjs
+            - run: aws s3 sync ./dist/apps/swinburne-dev/.next s3://nx-swinburne-dev-nextjs
