@@ -23,7 +23,7 @@ jobs:
             - name: Run npm install, build, and export
               run: |
                   npm install
-                  npx nx run swinburne-dev:build
+                  npx nx build swinburne-dev --verbose
 
             - uses: aws-actions/configure-aws-credentials@v1
               with:
