@@ -1,0 +1,76 @@
+🔎 checking possible migrations..
+
+🔎 found a 'github-flavored-markdown-mdx' migration:
+╭ Automigration detected ─────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                 │
+│   In MDX1 you had the option of using GitHub flavored markdown.                                                                 │
+│                                                                                                                                 │
+│   Storybook >= 8.0 uses MDX3 for compiling MDX, and thus no longer supports GFM out of the box.                                 │
+│   Because of this you need to explicitly add the GFM plugin in the addon-docs options:                                          │
+│   https://storybook.js.org/docs/writing-docs/mdx#markdown-tables-arent-rendering-correctly                                      │
+│                                                                                                                                 │
+│   We recommend that you follow the guide in the link above; however, we can add a temporary Storybook addon to help make this   │
+│   migration easier.                                                                                                             │
+│   We'll install the addon and add it to your storybook config.                                                                  │
+│                                                                                                                                 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+✅ Adding "@storybook/addon-mdx-gfm" addon
+✅ ran github-flavored-markdown-mdx migration
+
+🔎 found a 'webpack5-compiler-setup' migration:
+╭ Migration notification ──────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                          │
+│   Storybook now detects whether it should use Babel or SWC as a compiler by applying the same logic as Next.js itself:   │
+│                                                                                                                          │
+│     - If you have a .babelrc (or babel.config.js) file in your project, Storybook will use Babel as the compiler.        │
+│     - If you have a .babelrc (or babel.config.js) file in your project and you have set                                  │
+│       experimental.forceSwcTransforms = true in your next.config.js file,                                                │
+│       Storybook will use SWC as the compiler.                                                                            │
+│     - If you don't have a .babelrc (or babel.config.js) file in your project, Storybook will use SWC as the compiler.    │
+│                                                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+⚠️  failed to check fix autodocs-tags
+
+Error: ❌ Failed to remove the deprecated docs.autodocs setting from .storybook/main.js.
+
+There is no preview config file in which to add the autodocs tag.
+
+Please perform the migration by hand: https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#mainjs-docsautodocs-is-deprecated
+    at Object.check (/Users/andyswinburne/.npm/_npx/08a9f7b18524656b/node_modules/@storybook/cli/dist/bin/index.cjs:129:533)
+    at runFixes (/Users/andyswinburne/.npm/_npx/08a9f7b18524656b/node_modules/@storybook/cli/dist/bin/index.cjs:531:2936)
+    at async automigrate (/Users/andyswinburne/.npm/_npx/08a9f7b18524656b/node_modules/@storybook/cli/dist/bin/index.cjs:531:1625)
+    at async doAutomigrate (/Users/andyswinburne/.npm/_npx/08a9f7b18524656b/node_modules/@storybook/cli/dist/bin/index.cjs:531:636)
+    at async Command.<anonymous> (/Users/andyswinburne/.npm/_npx/08a9f7b18524656b/node_modules/@storybook/cli/dist/bin/index.cjs:601:2888)
+
+╭ Migration check ran with failures ──────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                 │
+│   Successful migrations:                                                                                                        │
+│                                                                                                                                 │
+│   github-flavored-markdown-mdx                                                                                                  │
+│                                                                                                                                 │
+│   Failed migrations:                                                                                                            │
+│                                                                                                                                 │
+│   autodocs-tags:                                                                                                                │
+│   ❌ Failed to remove the deprecated docs.autodocs setting from .storybook/main.js.                                             │
+│                                                                                                                                 │
+│   There is no preview config file in which to add the autodocs tag.                                                             │
+│                                                                                                                                 │
+│   Please perform the migration by hand:                                                                                         │
+│   https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#mainjs-docsautodocs-is-deprecated                             │
+│                                                                                                                                 │
+│   You can find the full logs in /Users/andyswinburne/GitHub/swin-dev-nx/migration-storybook.log                                 │
+│                                                                                                                                 │
+│   ─────────────────────────────────────────────────                                                                             │
+│                                                                                                                                 │
+│   If you'd like to run the migrations again, you can do so by running 'npx storybook automigrate'                               │
+│                                                                                                                                 │
+│   The automigrations try to migrate common patterns in your project, but might not contain everything needed to migrate to      │
+│   the latest version of Storybook.                                                                                              │
+│                                                                                                                                 │
+│   Please check the changelog and migration guide for manual migrations and more information:                                    │
+│   https://storybook.js.org/docs/migration-guide                                                                                 │
+│   And reach out on Discord if you need help: https://discord.gg/storybook                                                       │
+│                                                                                                                                 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
