@@ -22,7 +22,7 @@ export function ImageCaption({
                 src={url}
                 alt={alt || ""}
                 /* @ts-ignore */
-                fetchpriority={priority}
+                fetchPriority={priority}
                 loading={loading}
             />
             {caption && (
