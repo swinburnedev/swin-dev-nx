@@ -54,6 +54,7 @@
     "@nx/webpack": "20.0.8",
     "@nx/workspace": "20.0.8",
     "@nxkit/playwright": "^2.0.1",
+    "@nxtensions/astro": "^19.0.1",
     "@playwright/test": "^1.25.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "@storybook/addon-essentials": "^8.4.1",
