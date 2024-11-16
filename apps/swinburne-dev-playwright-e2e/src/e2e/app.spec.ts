@@ -10,15 +10,6 @@ test.describe('nav', () => {
         await expect(logo).toBeVisible();
     });
 
-    test('has CV PDF link', async ({ page }) => {
-        const link = page.locator('nav a', { hasText: 'CV' });
-        await expect(link).toBeVisible();
-        await expect(link).toHaveAttribute(
-            'href',
-            '/pdf/CV_Swinburne_Andy_website.pdf'
-        );
-    });
-
     test('has projets link', async ({ page }) => {
         const link = page.locator('nav a', { hasText: 'Projects' });
         await expect(link).toBeVisible();

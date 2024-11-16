@@ -1,0 +1,55 @@
+{
+  "name": "swinburne-dev-nest",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/swinburne-dev-nest/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/swinburne-dev-nest",
+        "main": "apps/swinburne-dev-nest/src/main.ts",
+        "tsConfig": "apps/swinburne-dev-nest/tsconfig.app.json",
+        "assets": ["apps/swinburne-dev-nest/src/assets"],
+        "webpackConfig": "apps/swinburne-dev-nest/webpack.config.js",
+        "generatePackageJson": true
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "swinburne-dev-nest:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "swinburne-dev-nest:build:development"
+        },
+        "production": {
+          "buildTarget": "swinburne-dev-nest:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/swinburne-dev-nest/jest.config.ts"
+      }
+    }
+  }
+}

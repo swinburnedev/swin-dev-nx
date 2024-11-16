@@ -1,1 +1,1 @@
-// import './tailwind-import.css';
+export const tags = ["autodocs"];

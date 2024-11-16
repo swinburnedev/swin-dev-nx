@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/swinburne-dev",
   "projectType": "application",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/next:build",
@@ -23,7 +24,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "swinburne-dev:build",
-        "dev": true
+        "dev": true,
+        "proxyConfig": "apps/swinburne-dev/proxy.conf.json"
       },
       "configurations": {
         "development": {
@@ -53,6 +55,5 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
     }
-  },
-  "tags": []
+  }
 }

@@ -49,7 +49,7 @@ export function Projects({ projects, title }: IProjectsProps) {
 export const getStaticProps: GetStaticProps = async () => {
     const query = gql`
         query ($preview: Boolean!) {
-            projectCollection(limit: 10, preview: $preview) {
+            projectCollection(limit: 10, order: startDate_DESC, preview: $preview) {
                 items {
                     title
                     brand
@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps = async () => {
                 }
             }
         }
-    `;
+    `
     const contentfulPreview = Boolean(process.env.CONTENTFUL_PREVIEW);
     const { data } = await client.query({
         query: query,
