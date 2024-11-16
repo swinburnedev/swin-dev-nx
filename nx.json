@@ -56,5 +56,6 @@
       "!{projectRoot}/src/test-setup.[jt]s"
     ]
   },
-  "nxCloudAccessToken": "ZmIwMmM2ZGEtMWM1YS00NjM3LWJmNjYtZGVlMTVjMTQzNzVlfHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "ZmIwMmM2ZGEtMWM1YS00NjM3LWJmNjYtZGVlMTVjMTQzNzVlfHJlYWQtd3JpdGU=",
+  "nxCloudId": "66ca36b584a793b218a7777d"
 }
