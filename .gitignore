@@ -55,3 +55,4 @@ Thumbs.db
 .nx/workspace-data
 
 .astro
+nx-cloud.env
