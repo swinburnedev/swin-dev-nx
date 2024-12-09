@@ -1,12 +1,14 @@
 module.exports = {
     stories: ["../**/*.@(mdx|stories.@(js|jsx|ts|tsx))"],
     addons: [
+        "@storybook/addon-a11y",
+        "@storybook/addon-designs",
         "@storybook/addon-essentials",
+        // "@storybook/addon-interactions",
         "@nx/react/plugins/storybook",
-        "@chromatic-com/storybook",
-        "@storybook/addon-mdx-gfm"
+        "@storybook/addon-mdx-gfm",
+        "@etchteam/storybook-addon-status",
     ],
-
     framework: {
         name: "@storybook/nextjs",
         options: {},
@@ -17,6 +19,6 @@ module.exports = {
     },
 
     typescript: {
-        reactDocgen: "react-docgen-typescript"
-    }
+        reactDocgen: "react-docgen-typescript",
+    },
 }
