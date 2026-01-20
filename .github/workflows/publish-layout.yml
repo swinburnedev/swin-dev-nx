@@ -1,0 +1,73 @@
+name: Publish Layout Package to GitHub Packages
+
+on:
+  push:
+    paths:
+      - 'libs/layout/**'
+      - '.github/workflows/publish-layout.yml'
+      - 'package.json'
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@swinburne-dev'
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run layout tests
+        run: npx nx test layout --ci --coverage
+
+      - name: Prepare package for publishing
+        run: |
+          mkdir -p dist/libs/layout
+          cp -r libs/layout/src dist/libs/layout/
+          cp libs/layout/package.json dist/libs/layout/
+          cp libs/layout/README.md dist/libs/layout/
+          cp libs/layout/tsconfig.lib.json dist/libs/layout/tsconfig.json
+          echo "Package contents prepared:"
+          ls -la dist/libs/layout/
+
+      - name: Publish to GitHub Packages
+        run: cd dist/libs/layout && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment on commit
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const status = '${{ job.status }}';
+            const emoji = status === 'success' ? '✅' : '❌';
+            const message = status === 'success' 
+              ? `${emoji} Published @swinburne-dev/layout to GitHub Packages`
+              : `${emoji} Failed to publish @swinburne-dev/layout`;
+            console.log(message);

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ContentfulRichText, ImageCaption } from '@swin-dev-nx/shared/ui';
 import { gql } from '@apollo/client';
 import client from '../apollo/client';
-import { Layout } from '../components/layout';
+import { Layout } from '../../../libs/layout/src';
 import { IPageProps } from '../types/index.types';
 
 export function Index({

@@ -5,6 +5,11 @@
 .env.*
 !.env.default
 
+# NPM credentials (NEVER commit tokens!)
+.npmrc.local
+.npmrc-private
+.node-gyp
+
 # compiled output
 /dist
 /tmp

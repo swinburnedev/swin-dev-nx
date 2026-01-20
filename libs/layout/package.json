@@ -1,0 +1,53 @@
+{
+  "name": "@swinburne-dev/layout",
+  "version": "1.0.0",
+  "description": "Layout component for Swinburne Dev portfolio site",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "module": "./src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts",
+      "types": "./src/index.ts"
+    }
+  },
+  "files": [
+    "src",
+    "tsconfig.json",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swinburnedev/swin-dev-nx.git",
+    "directory": "libs/layout"
+  },
+  "keywords": [
+    "layout",
+    "react",
+    "component",
+    "swinburne-dev"
+  ],
+  "author": "Swinburne Dev",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "next": "^14.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": false
+    },
+    "react-dom": {
+      "optional": false
+    },
+    "next": {
+      "optional": false
+    }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  }
+}
